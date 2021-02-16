@@ -14,6 +14,69 @@ namespace ConsoleUI
             //CarTest();
             //BrandTest();
             //ColorTest();
+            //CustomerTest();
+            //UserTest();
+            RentalTest();
+        }
+
+        private static void RentalTest()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            rentalManager.Add(new Rental { CarId = 1 , CustomerId = 2 ,RentDate = new DateTime(2021, 02, 25), ReturnDate = new DateTime(2021, 02, 27) });
+            //rentalManager.Update(new Rental { RentalId = 2, CarId = 1, CustomerId = 1, RentDate = new DateTime(2021, 02, 15), ReturnDate = new DateTime(2021, 02, 20) });
+
+            var result = rentalManager.GetRentalDetails();
+            if (result.Success)
+            {
+                foreach (var rental in result.Data)
+                {
+                    Console.WriteLine(rental.RentalId + ") " + rental.User + " => " + rental.ColorName + rental.BrandName);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+        }
+
+        private static void UserTest()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+
+            userManager.Add(new User { FirstName = "Emir Safa", LastName = "Yavuz", Email = "emirsafayavuz@gmail.com", Password = "123" });
+
+            var result = userManager.GetAll();
+            if (result.Success)
+            {
+                foreach (var user in result.Data)
+                {
+                    Console.WriteLine(user.UserId + " / " + user.FirstName + user.LastName);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+        }
+
+        private static void CustomerTest()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+
+            customerManager.Add(new Customer { UserId = 2, CompanyName = "Yavuz Holding" });
+
+            var result = customerManager.GetAll();
+            if (result.Success)
+            {
+                foreach (var customer in result.Data)
+                {
+                    Console.WriteLine(customer.CompanyName);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
         }
 
         private static void ColorTest()
