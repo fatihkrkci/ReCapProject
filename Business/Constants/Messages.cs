@@ -21,6 +21,7 @@ namespace Business.Constants
         public static string BrandDeleted = "Marka Başarıyla Silindi!";
         public static string BrandUpdated = "Marka Başarıyla Güncellendi!";
         public static string BrandsListed = "Markalar Başarıyla Listelendi!";
+        public static string BrandNameAlreadyExists = "Bu Marka Zaten Mevcut!";
 
         public static string ColorAdded = "Renk Başarıyla Eklendi!";
         public static string ColorDeleted = "Renk Başarıyla Silindi!";
@@ -48,6 +49,7 @@ namespace Business.Constants
         public static string CarImageUpdated = "Araç Resmi Başarıyla Güncellendi!";
         public static string CarImagesListed = "Araç Resimleri Başarıyla Listelendi!";
         public static string FailAddedImageLimit = "Bir Aracın En Fazla 5 Resmi Olabilir!";
+        
         public static string AuthorizationDenied = "Yetkiniz Yok!";
         public static string UserRegistered = "Kayıt Olundu!";
         public static string UserNotFound = "Kullanıcı Bulunamadı!";
