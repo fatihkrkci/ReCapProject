@@ -50,7 +50,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Rental>> GetAll()
         {
-            if (DateTime.Now.Hour == 19)
+            if (DateTime.Now.Hour == 20)
             {
                 return new ErrorDataResult<List<Rental>>(Messages.MaintenanceTime);
             }
