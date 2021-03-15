@@ -23,6 +23,12 @@ namespace Business.Constants
         public static string BrandsListed = "Markalar Başarıyla Listelendi!";
         public static string BrandNameAlreadyExists = "Bu Marka Zaten Mevcut!";
 
+        public static string CategoryAdded = "Kategori Başarıyla Eklendi!";
+        public static string CategoryDeleted = "Kategori Başarıyla Silindi!";
+        public static string CategoryUpdated = "Kategori Başarıyla Güncellendi!";
+        public static string CategoriesListed = "Kategoriler Başarıyla Listelendi!";
+        public static string CategoryNameAlreadyExists = "Bu Kategori Zaten Mevcut!";
+
         public static string ColorAdded = "Renk Başarıyla Eklendi!";
         public static string ColorDeleted = "Renk Başarıyla Silindi!";
         public static string ColorUpdated = "Renk Başarıyla Güncellendi!";

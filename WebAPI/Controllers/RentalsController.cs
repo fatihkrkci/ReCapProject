@@ -24,9 +24,9 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            Thread.Sleep(5000);
+            Thread.Sleep(1000);
 
-            var result = _rentalService.GetAll();
+            var result = _rentalService.GetAllRentals();
             if (result.Success)
             {
                 return Ok(result);
@@ -38,6 +38,17 @@ namespace WebAPI.Controllers
         public IActionResult GetById(int id)
         {
             var result = _rentalService.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbycategory")]
+        public IActionResult GetByCategory(string categoryName)
+        {
+            var result = _rentalService.GetByCategory(categoryName);
             if (result.Success)
             {
                 return Ok(result);

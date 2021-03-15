@@ -12,9 +12,11 @@ namespace Business.Abstract
         IDataResult<Rental> GetById(int id);
         IDataResult<List<RentalDetailDto>> GetRentalDetails(int carId);
         IDataResult<List<Rental>> GetAll();
+        IDataResult<List<RentalAllDto>> GetAllRentals();
         IResult Add(Rental rental);
         IResult Update(Rental rental);
         IResult Delete(Rental rental);
         IResult CheckReturnDate(int carId);
+        IDataResult<Rental> GetByCategory(string categoryName);
     }
 }

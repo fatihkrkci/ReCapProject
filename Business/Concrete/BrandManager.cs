@@ -51,11 +51,16 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<Brand>> GetAll()
         {
-            if (DateTime.Now.Hour == 23)
+            if (DateTime.Now.Hour == 19)
             {
                 return new ErrorDataResult<List<Brand>>(Messages.MaintenanceTime);
             }
             return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), Messages.BrandsListed);
+        }
+
+        public IDataResult<Brand> GetByCategory(string categoryName)
+        {
+            return new SuccessDataResult<Brand>(_brandDal.Get(b => b.CategoryName == categoryName));
         }
 
         [CacheAspect]

@@ -50,11 +50,21 @@ namespace Business.Concrete
 
         public IDataResult<List<Rental>> GetAll()
         {
-            if (DateTime.Now.Hour == 20)
+            if (DateTime.Now.Hour == 19)
             {
                 return new ErrorDataResult<List<Rental>>(Messages.MaintenanceTime);
             }
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(), Messages.RentalsListed);
+        }
+
+        public IDataResult<List<RentalAllDto>> GetAllRentals()
+        {
+            return new SuccessDataResult<List<RentalAllDto>>(_rentalDal.GetAllRentals());
+        }
+
+        public IDataResult<Rental> GetByCategory(string categoryName)
+        {
+            return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.CategoryName == categoryName));
         }
 
         public IDataResult<Rental> GetById(int id)
