@@ -45,6 +45,77 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getcardetailsbyid")]
+        public IActionResult GetCarDetails(int id)
+        {
+            var result = _carService.GetCarDetailsById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
+
+        [HttpGet("getallbycolorid")]
+        public IActionResult GetAllByColorId(int id)
+        {
+            var result = _carService.GetAllByColorId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
+
+        [HttpGet("getallbybrandid")]
+        public IActionResult GetAllByBrandId(int id)
+        {
+            var result = _carService.GetAllByBrandId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
+
+        [HttpGet("getbydailyprice")]
+        public IActionResult GetByDailyPrice(decimal min, decimal max)
+        {
+            var result = _carService.GetByDailyPrice(min, max);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
+
+        [HttpGet("getbymodelyear")]
+        public IActionResult GetByModelYear(string year)
+        {
+            var result = _carService.GetByModelYear(year);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
+
+
         [HttpGet("getbycategory")]
         public IActionResult GetByCategory(string categoryName)
         {

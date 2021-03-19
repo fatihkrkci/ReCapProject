@@ -47,9 +47,24 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.CarsListed);
         }
 
+        public IDataResult<List<CarDetailDto>> GetAllByBrandId(int id)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.BrandId == id));
+        }
+
+        public IDataResult<List<CarDetailDto>> GetAllByColorId(int id)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.ColorId == id));
+        }
+
         public IDataResult<Car> GetByCategory(string categoryName)
         {
             return new SuccessDataResult<Car>(_carDal.Get(c => c.CategoryName == categoryName));
+        }
+
+        public IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max)
+        {
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.DailyPrice >= min && c.DailyPrice <= max));
         }
 
         public IDataResult<Car> GetById(int id)
@@ -57,13 +72,23 @@ namespace Business.Concrete
             return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == id));
         }
 
+        public IDataResult<List<Car>> GetByModelYear(string year)
+        {
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ModelYear == year));
+        }
+
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            if (DateTime.Now.Hour == 18)
+            if (DateTime.Now.Hour == 19)
             {
                 return new ErrorDataResult<List<CarDetailDto>>(Messages.MaintenanceTime);
             }
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetailsById(int id)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.Id == id));
         }
 
         public IDataResult<List<Car>> GetCarsByBrandId(int id)
