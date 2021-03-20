@@ -65,7 +65,7 @@ namespace Business.Concrete
 
         public IDataResult<List<CarImage>> GetAll()
         {
-            if (DateTime.Now.Hour == 14)
+            if (DateTime.Now.Hour == 1)
             {
                 return new ErrorDataResult<List<CarImage>>(Messages.MaintenanceTime);
             }
